@@ -1,13 +1,8 @@
 import React from "react";
 
 async function Loading() {
-  await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("ok");
-    }, 2000);
-  });
   return (
-    <div className="w-full h-[500px] bg-blue-300 grid place-items-center animate-spin">
+    <div className="w-full h-[400px] bg-blue-300 grid place-items-center animate-pulse transition-all">
       Loading Team Page ...
     </div>
   );

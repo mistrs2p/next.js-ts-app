@@ -12,7 +12,7 @@ function layout({
   return (
     <>
       {children}{" "}
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 transition-all">
         {team}
         {analytics}
       </div>
