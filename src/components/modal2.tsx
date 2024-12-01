@@ -1,11 +1,7 @@
-"use client";
+'use client'
 import { useRouter } from "next/navigation";
-import React, {
-  MouseEventHandler,
-  useCallback,
-  useEffect,
-  useRef,
-} from "react";
+import React, { MouseEventHandler, useCallback, useRef } from "react";
+import { createPortal } from "react-dom";
 
 export default function Modal({ children }: { children: React.ReactNode }) {
   const overlay = useRef(null);
@@ -25,26 +21,7 @@ export default function Modal({ children }: { children: React.ReactNode }) {
     },
     [onDismiss, overlay, wrapper]
   );
-
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onDismiss();
-      }
-    },
-    [onDismiss]
-  );
-
-  useEffect(() => {
-    document.addEventListener("keydown", onKeyDown);
-    // document.body.style.overflow = 'hidden';
-    return () => {
-      // document.body.style.overflow = 'auto';
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [onKeyDown]);
-
-  return (
+  return createPortal(
     <div
       ref={overlay}
       className="fixed top-0 right-0 left-0 bottom-0 mx-auto bg-black/60"
@@ -56,6 +33,7 @@ export default function Modal({ children }: { children: React.ReactNode }) {
       >
         {children}
       </div>
-    </div>
+    </div>,
+    document.getElementById('modal-root')!
   );
 }

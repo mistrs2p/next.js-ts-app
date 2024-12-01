@@ -11,7 +11,7 @@ async function Test() {
       next: {
         revalidate: 2,
       },
-    },
+    }
   );
 
   const quotes = await res.json().then(sleep(2000));
@@ -19,7 +19,7 @@ async function Test() {
   //   throw new Error("this is a custom error");
   return (
     <div>
-      {quotes.map((quote: any, index: number) => (
+      {quotes.map((quote: { quote: string }, index: number) => (
         <h1 key={index}>{quote.quote}</h1>
       ))}
       <Script

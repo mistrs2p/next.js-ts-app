@@ -1,8 +1,10 @@
 "use client";
 import { Test } from "@/components/Test/Test";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+
+
 export default function Home() {
   const searhParams = useSearchParams();
   console.log(searhParams.get("color"));
@@ -10,6 +12,9 @@ export default function Home() {
   return (
     <div>
       <h1>Welcome</h1>
+      <div className="container border border-gray-300">
+        adf
+      </div>
       <ul>
         <li>
           <Link href={"/dashboard#yellow"}>Dashboard yellow</Link>
